@@ -1,0 +1,156 @@
+{
+  "template_id": "hackademic-xapi-template-why-data-formatting-matters-v1",
+  "actor_placeholder": {
+    "name": "{{learner_name}}",
+    "mbox": "mailto:{{learner_email}}"
+  },
+  "verb": {
+    "id": "http://adlnet.gov/expapi/verbs/demonstrated",
+    "display": {
+      "en-US": "demonstrated"
+    }
+  },
+  "object": {
+    "id": "https://hackademic.solutions/learning-objects/why-data-formatting-matters",
+    "definition": {
+      "name": {
+        "en-US": "Why Data Formatting Matters: A Manager\u2019s Guide to Structured Information"
+      },
+      "description": {
+        "en-US": "Learner demonstrated business-level understanding of how structured data formatting supports data quality, automation, AI adoption, reporting, and governance."
+      },
+      "type": "http://adlnet.gov/expapi/activities/lesson"
+    }
+  },
+  "context": {
+    "contextActivities": {
+      "category": [
+        {
+          "id": "https://hackademic.solutions/categories/digital-literacy-foundation",
+          "definition": {
+            "name": {
+              "en-US": "Digital Literacy Foundation"
+            }
+          }
+        },
+        {
+          "id": "https://hackademic.solutions/categories/format-plus",
+          "definition": {
+            "name": {
+              "en-US": "Format Plus"
+            }
+          }
+        },
+        {
+          "id": "https://hackademic.solutions/categories/ai-adoption-pathway",
+          "definition": {
+            "name": {
+              "en-US": "AI Adoption Pathway"
+            }
+          }
+        }
+      ]
+    },
+    "extensions": {
+      "https://hackademic.solutions/xapi/extensions/audience": "Non-technical executives and managers",
+      "https://hackademic.solutions/xapi/extensions/framework": "Read-Watch-Do",
+      "https://hackademic.solutions/xapi/extensions/primary-format-example": "JSON",
+      "https://hackademic.solutions/xapi/extensions/pathway": "Format Plus"
+    }
+  },
+  "result": {
+    "completion": "{{true_or_false}}",
+    "success": "{{true_or_false}}",
+    "score": {
+      "scaled": "{{quiz_score_scaled}}",
+      "raw": "{{quiz_score_raw}}",
+      "min": 0,
+      "max": 5
+    },
+    "response": "{{learner_manager_follow_up_question}}",
+    "extensions": {
+      "https://hackademic.solutions/xapi/extensions/identified-formatting-issue": "{{learner_identified_issue}}",
+      "https://hackademic.solutions/xapi/extensions/identified-important-fields": "{{learner_selected_fields}}",
+      "https://hackademic.solutions/xapi/extensions/reflection-summary": "{{learner_reflection_summary}}"
+    }
+  },
+  "evidence_artifact": {
+    "type": "structured_data_review_submission",
+    "description": "Learner-submitted review of the AI Contract Summary Routing structured data example.",
+    "placeholder_id": "{{structured_data_review_submission_id}}",
+    "placeholder_url": "{{structured_data_review_submission_url}}",
+    "expected_contents": [
+      "Plain-English summary",
+      "Three fields that matter for business decision-making",
+      "One formatting or data quality issue",
+      "One manager-level follow-up question",
+      "Reflection response"
+    ]
+  },
+  "statement_example": {
+    "actor": {
+      "name": "Example Learner",
+      "mbox": "mailto:learner@example.com"
+    },
+    "verb": {
+      "id": "http://adlnet.gov/expapi/verbs/demonstrated",
+      "display": {
+        "en-US": "demonstrated"
+      }
+    },
+    "object": {
+      "id": "https://hackademic.solutions/learning-objects/why-data-formatting-matters",
+      "definition": {
+        "name": {
+          "en-US": "Why Data Formatting Matters: A Manager\u2019s Guide to Structured Information"
+        },
+        "description": {
+          "en-US": "Learner demonstrated business-level understanding of how structured data formatting supports data quality, automation, AI adoption, reporting, and governance."
+        },
+        "type": "http://adlnet.gov/expapi/activities/lesson"
+      }
+    },
+    "context": {
+      "contextActivities": {
+        "category": [
+          {
+            "id": "https://hackademic.solutions/categories/format-plus",
+            "definition": {
+              "name": {
+                "en-US": "Format Plus"
+              }
+            }
+          }
+        ]
+      },
+      "extensions": {
+        "https://hackademic.solutions/xapi/extensions/audience": "Non-technical executives and managers",
+        "https://hackademic.solutions/xapi/extensions/framework": "Read-Watch-Do",
+        "https://hackademic.solutions/xapi/extensions/primary-format-example": "JSON"
+      }
+    },
+    "result": {
+      "completion": true,
+      "success": true,
+      "score": {
+        "scaled": 0.8,
+        "raw": 4,
+        "min": 0,
+        "max": 5
+      },
+      "response": "How does the workflow handle contract routing when the required reviewer field is missing, and who is accountable for correcting that data before production approval?",
+      "extensions": {
+        "https://hackademic.solutions/xapi/extensions/identified-formatting-issue": "The required reviewer field is missing.",
+        "https://hackademic.solutions/xapi/extensions/identified-important-fields": "status, approved_for_production, missing_fields",
+        "https://hackademic.solutions/xapi/extensions/reflection-summary": "Structured data is more reliable for AI, automation, reporting, and governance than ambiguous notes."
+      }
+    },
+    "timestamp": "{{timestamp_iso8601}}"
+  },
+  "review_notes": [
+    "This is an xAPI-ready statement template only. It does not indicate live LRS tracking.",
+    "Confirm final activity object URL before implementation.",
+    "Confirm whether evidence artifact is stored in Skool, LMS, repository, or separate assessment system.",
+    "Validate extension URLs before production use."
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "identifier": "hackademic-lo-foundations-why-data-formatting-matters-v1",
+  "title": "Why Data Formatting Matters: A Manager\u2019s Guide to Structured Information",
+  "version": "1.0",
+  "description": "An introductory business and digital literacy module that explains why structured data formatting matters for AI adoption, automation, reporting, governance, and decision quality. JSON is used as the first practical example in the Format Plus pathway.",
+  "launch_asset": {
+    "suggested_file": "index.html",
+    "notes": "SCORM 1.2-ready metadata only. This file does not represent a complete SCORM package."
+  },
+  "completion_rule": {
+    "type": "content_and_activity_completion",
+    "requirements": [
+      "Learner completes the READ section.",
+      "Learner completes the WATCH/demo section.",
+      "Learner submits the DO activity.",
+      "Learner completes the reflection prompt.",
+      "Learner completes the check-for-understanding."
+    ]
+  },
+  "success_criteria": {
+    "mastery_score_percent": 80,
+    "quiz_requirement": "At least 4 out of 5 questions correct.",
+    "activity_requirement": "Learner submits a plain-English review identifying three meaningful fields, one data quality or formatting issue, and one manager-level follow-up question."
+  },
+  "estimated_time_minutes": 30,
+  "score_model": {
+    "score_min": 0,
+    "score_max": 5,
+    "mastery_score": 4,
+    "scaled_mastery_score": 0.8,
+    "status_mapping": {
+      "incomplete": "Learner launched but did not complete all required sections.",
+      "completed": "Learner completed required lesson content and activity.",
+      "passed": "Learner completed required content and achieved mastery score.",
+      "failed": "Learner completed quiz but did not achieve mastery score."
+    }
+  },
+  "interactions": [
+    {
+      "id": "anticipation_prompt",
+      "type": "fill-in",
+      "description": "Learner compares unstructured and structured customer examples before instruction."
+    },
+    {
+      "id": "watch_scenario_review",
+      "type": "performance",
+      "description": "Learner reviews a structured automation example and identifies why a missing field affects workflow reliability."
+    },
+    {
+      "id": "do_activity_structured_data_review",
+      "type": "performance",
+      "description": "Learner reviews an AI-enabled workflow example and submits a plain-English summary, three important fields, one formatting issue, and one follow-up question."
+    },
+    {
+      "id": "reflection_prompt",
+      "type": "fill-in",
+      "description": "Learner reflects on how structured data affects AI, automation, reporting, and dashboard confidence."
+    },
+    {
+      "id": "quiz_q1",
+      "type": "choice",
+      "description": "Why does data formatting matter for AI adoption?",
+      "correct_response": "It helps systems interpret information consistently."
+    },
+    {
+      "id": "quiz_q2",
+      "type": "choice",
+      "description": "Which example is easiest for automation to process?",
+      "correct_response": "\"renewal_date\": \"2026-06-15\""
+    },
+    {
+      "id": "quiz_q3",
+      "type": "choice",
+      "description": "What is the main business risk when status is active and approved is false?",
+      "correct_response": "The item appears active even though it has not been approved."
+    },
+    {
+      "id": "quiz_q4",
+      "type": "choice",
+      "description": "What does a null last_reviewed value often indicate?",
+      "correct_response": "The record may lack review evidence."
+    },
+    {
+      "id": "quiz_q5",
+      "type": "choice",
+      "description": "Which is the best manager-level follow-up question?",
+      "correct_response": "How will this workflow route work correctly when the required reviewer field is missing?"
+    }
+  ],
+  "metadata": {
+    "object_id": "hackademic-lo-foundations-why-data-formatting-matters-v1",
+    "slug": "why-data-formatting-matters",
+    "pathway": "Format Plus",
+    "category": "foundations",
+    "audience": [
+      "Non-technical executives and managers",
+      "Department leaders",
+      "Project managers",
+      "Operations managers",
+      "Risk and compliance stakeholders",
+      "AI-curious professionals"
+    ],
+    "business_purpose": "Help business leaders understand why structured data formats matter for AI adoption, automation, reporting, governance, and decision quality.",
+    "technical_depth": "Introductory; no coding required",
+    "content_type": [
+      "Technical literacy foundation",
+      "Executive briefing",
+      "Manager/practitioner module",
+      "AI adoption pathway component",
+      "Digital literacy foundation"
+    ],
+    "delivery_platform": [
+      "Skool",
+      "Workshop",
+      "Advisory enablement"
+    ],
+    "human_review_required": true,
+    "status": "draft"
+  },
+  "review_notes": [
+    "Confirm quiz scoring behavior in target SCORM authoring tool.",
+    "Confirm whether activity submission is tracked inside SCORM runtime or collected externally.",
+    "Validate launch asset naming during packaging.",
+    "This metadata is SCORM 1.2-ready but is not a packaged SCORM ZIP."
+  ]
+}

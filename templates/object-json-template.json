@@ -1,0 +1,53 @@
+{
+  "object_id": "",
+  "title": "",
+  "slug": "",
+  "pathway": "",
+  "category": "",
+  "audience": [],
+  "business_purpose": [],
+  "technical_depth": "",
+  "estimated_duration_minutes": 0,
+  "content_type": [],
+  "delivery_platforms": [
+    "skool",
+    "linkedin",
+    "slides",
+    "future_lms"
+  ],
+  "scorm_target": "SCORM 1.2",
+  "xapi_ready": true,
+  "status": "draft",
+  "human_review_required": [
+    "technical_accuracy",
+    "audience_fit",
+    "brand_voice",
+    "source_verification",
+    "scorm_metadata",
+    "xapi_template"
+  ],
+  "learning_objective": "",
+  "components": {
+    "anticipation_prompt": "components/anticipation-prompt.md",
+    "read_core_concepts": "components/read-core-concepts.md",
+    "watch_scenario": "components/watch-scenario.md",
+    "do_activity": "components/do-activity.md",
+    "quiz": "components/quiz.md",
+    "reflection_prompt": "components/reflection-prompt.md",
+    "reuse_notes": "components/reuse-notes.md",
+    "suggested_next_objects": "components/suggested-next-objects.md"
+  },
+  "renders": {
+    "skool": "renders/skool.md",
+    "linkedin": "renders/linkedin.md",
+    "slides": "renders/slides.md"
+  },
+  "metadata": {
+    "scorm": "metadata/scorm.json",
+    "xapi_template": "metadata/xapi-template.json",
+    "review_checklist": "metadata/review-checklist.md"
+  },
+  "source_references": [],
+  "version": "0.1",
+  "last_updated": ""
+}

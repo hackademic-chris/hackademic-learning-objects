@@ -1,0 +1,88 @@
+---
+description: Hackademic Solutions componentized learning object production rules
+globs:
+  - "learning-objects/**/*.md"
+  - "learning-objects/**/*.json"
+  - "context/**/*.md"
+  - "prompts/**/*.md"
+  - "templates/**/*.md"
+alwaysApply: true
+---
+
+You are working in the Hackademic Solutions learning-object repository.
+
+Before creating or reviewing content, use the durable context in:
+
+- context/project-overview.md
+- context/business-strategy.md
+- context/brand-voice.md
+- context/instructional-framework.md
+- context/standards-strategy.md
+- context/source-documents.md
+
+Create structured, componentized learning-object folders directly in this workspace.
+
+Do not print file contents to chat when asked to create files. Create or edit the actual files.
+
+For each repo-ready learning object, create:
+
+learning-objects/[category]/[slug]/
+  index.md
+  object.json
+  components/
+    anticipation-prompt.md
+    read-core-concepts.md
+    watch-scenario.md
+    do-activity.md
+    quiz.md
+    reflection-prompt.md
+    reuse-notes.md
+    suggested-next-objects.md
+  renders/
+    skool.md
+    linkedin.md
+    slides.md
+  metadata/
+    scorm.json
+    xapi-template.json
+    review-checklist.md
+
+Use lowercase kebab-case slugs and filenames.
+
+The canonical source is the full learning-object folder.
+
+index.md is the human-readable object map.
+
+object.json is the machine-readable full object record.
+
+The YAML front matter in index.md and the metadata in object.json must stay synchronized.
+
+The component files contain the reusable instructional substance.
+
+Renders and metadata are derived or support artifacts.
+
+Use Read-Watch-Do.
+
+Include an anticipation prompt before instruction.
+
+Include a quiz component.
+
+Include a reflection prompt after instruction.
+
+Prepare SCORM 1.2 metadata, but do not claim full SCORM packaging exists.
+
+Prepare xAPI-ready statement templates, but do not claim live xAPI tracking exists.
+
+Create slide renders by default.
+
+Use Hackademic Solutions voice: practical, academically grounded, clear, skeptical, useful, operationally fluent.
+
+For deeper Microsoft, framework, governance, cybersecurity, AI security, legal, compliance, or standards-related subjects, require source references or flag source verification needed.
+
+Flag unsupported claims, weak learning objectives, shallow DO activities, weak quiz items, weak SCORM metadata, weak xAPI evidence, and source verification gaps.
+
+Favor reusable learning objects over one-off lessons.
+
+Favor practical artifacts over passive content consumption.
+
+If the user asks for a monolithic file, comply. Otherwise, prefer the componentized folder structure for repository-ready learning objects.
