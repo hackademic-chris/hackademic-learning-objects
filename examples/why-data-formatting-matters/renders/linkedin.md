@@ -2,70 +2,26 @@ Most AI adoption problems are not AI problems.
 
 Some are data formatting problems wearing a nicer jacket.
 
-Example:
+Last month I watched a COO prep for a board review. Finance showed $1.2M in committed Q2 pipeline. Sales showed $890K. Same accounts. Same quarter. Same CRM.
 
-> Customer name: Jane Smith  
-> Renewal date is sometime in June  
-> Account owner maybe Carlos?  
-> Notes: interested in AI features
+Nobody blamed the AI copilot first. Smart move.
 
-A person can read that.
+The argument started in the fields:
 
-A system has to guess.
+- One team logged `"close_date": "Q2"`
+- Another logged `"close_date": "2026-06-15"`
+- Revenue showed up as `"1.2M"` in one export and `1200000` in another
 
-Now compare it with this:
+Every dashboard looked authoritative. None of them agreed.
 
-```json
-{
-  "customer_name": "Jane Smith",
-  "renewal_date": "2026-06-15",
-  "account_owner": "Carlos Rivera",
-  "interest": ["AI features"]
-}
-```
+That is not a model quality problem. That is an intake and field-standard problem the organization exported into every tool downstream — including the new AI assistant leadership wanted to "fix reporting."
 
-That structure matters.
+Buying a better model does not standardize your close dates.
 
-It tells a system what each piece of information means.
+Fixing intake fields might.
 
-It supports automation.
+Executives and managers do not need to become developers. They do need to ask whether the data is structured well enough for automation, reporting, and AI to be useful — before signing the next pilot.
 
-It improves reporting.
+**Comment with one field your organization would need to standardize before automating renewals, approvals, or pipeline reporting.** Name the field. Name the format you would require.
 
-It reduces ambiguity.
-
-It gives AI tools better inputs.
-
-Executives and managers do not need to become developers.
-
-But they do need to understand this:
-
-Bad formatting creates bad decisions.
-
-AI and automation depend on structured data.
-
-Managers need to recognize when data is usable, risky, or ambiguous.
-
-JSON is just one example.
-
-The same issue shows up in spreadsheets, forms, CSV files, logs, dashboards, ticketing systems, CRM records, HR systems, and compliance evidence.
-
-If the renewal date is “sometime in June,” your automation has a problem.
-
-If the account owner is “Carlos?” your workflow has a problem.
-
-If the approval field is blank, your governance has a problem.
-
-If the same customer appears under four different names, your dashboard has a problem.
-
-And if you feed all of that into AI, now your AI has a problem too.
-
-Formatting is not cosmetic.
-
-Formatting is how information becomes usable.
-
-That makes it a management issue.
-
-Not just an IT issue.
-
-Soft test for your next AI project: before asking whether the tool is ready, ask whether the data is structured well enough for the tool to be useful.
+Formatting is not cosmetic. It is how information becomes usable. That makes it a management issue, not just an IT issue.

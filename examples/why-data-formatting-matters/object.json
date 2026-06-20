@@ -1,0 +1,73 @@
+{
+  "object_id": "hackademic-lo-foundations-why-data-formatting-matters-v1",
+  "title": "Why Data Formatting Matters: A Manager's Guide to Structured Information",
+  "slug": "why-data-formatting-matters",
+  "pathway": "Format Plus",
+  "category": "foundations",
+  "audience": {
+    "primary": "Non-technical executives and managers",
+    "secondary": [
+      "Department leaders",
+      "Project managers",
+      "Operations managers",
+      "Risk and compliance stakeholders",
+      "AI-curious professionals"
+    ]
+  },
+  "business_purpose": "Help business leaders understand why structured data formats matter for AI adoption, automation, reporting, governance, and decision quality.",
+  "technical_depth": "Introductory; no coding required",
+  "estimated_duration_minutes": 30,
+  "content_type": [
+    "Technical literacy foundation",
+    "Executive briefing",
+    "Manager/practitioner module",
+    "AI adoption pathway component",
+    "Digital literacy foundation"
+  ],
+  "delivery_platforms": [
+    "Skool",
+    "Workshop",
+    "Advisory enablement",
+    "LinkedIn",
+    "Slides"
+  ],
+  "scorm_target": "SCORM 1.2-ready metadata only",
+  "xapi_ready": true,
+  "status": "needs_revision",
+  "human_review_required": [
+    "technical_accuracy",
+    "audience_fit",
+    "brand_voice",
+    "scorm_metadata",
+    "xapi_template"
+  ],
+  "learning_objective": "Given a simple structured data example, the learner will explain what the format communicates, identify how formatting affects data quality or automation, and describe one business risk caused by poorly structured data.",
+  "components": {
+    "anticipation_prompt": "components/anticipation-prompt.md",
+    "read_core_concepts": "components/read-core-concepts.md",
+    "watch_scenario": "components/watch-scenario.md",
+    "do_activity": "components/do-activity.md",
+    "quiz": "components/quiz.md",
+    "reflection_prompt": "components/reflection-prompt.md",
+    "reuse_notes": "components/reuse-notes.md",
+    "suggested_next_objects": "components/suggested-next-objects.md"
+  },
+  "renders": {
+    "skool": "renders/skool.md",
+    "linkedin": "renders/linkedin.md",
+    "slides": "renders/slides.md"
+  },
+  "metadata": {
+    "scorm": "metadata/scorm.json",
+    "xapi_template": "metadata/xapi-template.json",
+    "review_checklist": "metadata/review-checklist.md"
+  },
+  "source_references": [
+    {
+      "note": "Foundation calibration content. No deep Microsoft, framework, or compliance claims requiring official citation.",
+      "optional_enrichment": "Data quality dimensions align with common DAMA-style definitions; cite if expanded for enterprise audiences."
+    }
+  ],
+  "version": "1.0",
+  "last_updated": "2026-06-20"
+}

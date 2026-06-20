@@ -1,90 +1,129 @@
 {
   "identifier": "hackademic-lo-foundations-why-data-formatting-matters-v1",
-  "title": "Why Data Formatting Matters: A Manager\u2019s Guide to Structured Information",
+  "title": "Why Data Formatting Matters: A Manager's Guide to Structured Information",
   "version": "1.0",
   "description": "An introductory business and digital literacy module that explains why structured data formatting matters for AI adoption, automation, reporting, governance, and decision quality. JSON is used as the first practical example in the Format Plus pathway.",
+  "scorm_package_exists": false,
+  "scorm_target": "SCORM 1.2-ready metadata only",
   "launch_asset": {
-    "suggested_file": "index.html",
-    "notes": "SCORM 1.2-ready metadata only. This file does not represent a complete SCORM package."
+    "suggested_file": null,
+    "status": "not_applicable_metadata_only",
+    "notes": "No launch file exists. This JSON is planning metadata for a future SCORM export if requested. It is not a packaged or deployable SCORM ZIP."
   },
   "completion_rule": {
-    "type": "content_and_activity_completion",
+    "type": "submitted_artifact_completion",
+    "notes": "Completion is defined by learner-submitted artifacts in the delivery platform (e.g., Skool posts). These requirements do not imply trackable SCORM runtime segments exist today.",
     "requirements": [
-      "Learner completes the READ section.",
-      "Learner completes the WATCH/demo section.",
-      "Learner submits the DO activity.",
-      "Learner completes the reflection prompt.",
-      "Learner completes the check-for-understanding."
+      "Learner submits anticipation prompt responses (messy vs structured customer comparison).",
+      "Learner submits three READ checkpoint responses.",
+      "Learner submits six WATCH discovery responses before debrief.",
+      "Learner submits DO structured workflow readiness review (all five parts).",
+      "Learner submits quiz answers (five scenario questions).",
+      "Learner submits reflection prompt responses."
     ]
   },
   "success_criteria": {
-    "mastery_score_percent": 80,
-    "quiz_requirement": "At least 4 out of 5 questions correct.",
-    "activity_requirement": "Learner submits a plain-English review identifying three meaningful fields, one data quality or formatting issue, and one manager-level follow-up question."
+    "notes": "Success requires both quiz mastery and a DO submission that meets rubric thresholds. Quiz alone is insufficient.",
+    "quiz_requirement": "At least 4 out of 5 quiz questions correct (80%).",
+    "activity_requirement": "Learner DO submission includes plain-English summary, three decision-relevant fields, prioritized formatting or data quality issue with business consequence, readiness decision with aligned rationale, and manager follow-up question naming workflow dependency and accountability.",
+    "activity_rubric_threshold": "Prioritized issue must exceed naming last_reviewed null alone. Readiness decision must align with stated rationale.",
+    "mastery_score_percent": 80
   },
   "estimated_time_minutes": 30,
   "score_model": {
+    "notes": "Score model is a planning reference for future LMS or SCORM export. Not a live runtime contract.",
     "score_min": 0,
     "score_max": 5,
     "mastery_score": 4,
     "scaled_mastery_score": 0.8,
+    "components": {
+      "quiz_raw_max": 5,
+      "do_artifact_rubric_max": 5
+    },
     "status_mapping": {
-      "incomplete": "Learner launched but did not complete all required sections.",
-      "completed": "Learner completed required lesson content and activity.",
-      "passed": "Learner completed required content and achieved mastery score.",
-      "failed": "Learner completed quiz but did not achieve mastery score."
+      "incomplete": "One or more required submitted artifacts missing.",
+      "completed": "All required artifacts submitted; quiz and DO rubric not yet evaluated.",
+      "passed": "All artifacts submitted; quiz >= 4/5 and DO rubric meets threshold.",
+      "failed": "All artifacts submitted; quiz or DO rubric below threshold."
     }
   },
   "interactions": [
     {
       "id": "anticipation_prompt",
       "type": "fill-in",
-      "description": "Learner compares unstructured and structured customer examples before instruction."
+      "description": "Learner compares unstructured and structured customer examples and posts four anticipation responses.",
+      "learner_response_required": true
+    },
+    {
+      "id": "read_checkpoint_1",
+      "type": "fill-in",
+      "description": "Learner identifies one automation-relevant field in the structured customer record and explains impact if missing or vague.",
+      "learner_response_required": true
+    },
+    {
+      "id": "read_checkpoint_2",
+      "type": "fill-in",
+      "description": "Learner identifies one business risk in the AI Meeting Summarizer example using specific fields.",
+      "learner_response_required": true
+    },
+    {
+      "id": "read_checkpoint_3",
+      "type": "fill-in",
+      "description": "Learner explains why status active with approved false should concern a manager.",
+      "learner_response_required": true
     },
     {
       "id": "watch_scenario_review",
-      "type": "performance",
-      "description": "Learner reviews a structured automation example and identifies why a missing field affects workflow reliability."
+      "type": "long-fill-in",
+      "description": "Learner inspects Customer Renewal Reminder JSON (sample_record vs required_fields) and posts six discovery responses before debrief.",
+      "learner_response_required": true
     },
     {
-      "id": "do_activity_structured_data_review",
+      "id": "do_activity_structured_workflow_readiness_review",
       "type": "performance",
-      "description": "Learner reviews an AI-enabled workflow example and submits a plain-English summary, three important fields, one formatting issue, and one follow-up question."
+      "description": "Learner submits Security Alert Triage Copilot readiness review: summary, three fields, prioritized issue, readiness decision with rationale, follow-up question.",
+      "learner_response_required": true,
+      "rubric_criteria": [
+        "Prioritized issue identifies non-trivial conflict or formatting problem with business consequence",
+        "Readiness decision aligns with rationale",
+        "Follow-up question names workflow dependency and accountability"
+      ]
     },
     {
       "id": "reflection_prompt",
       "type": "fill-in",
-      "description": "Learner reflects on how structured data affects AI, automation, reporting, and dashboard confidence."
+      "description": "Learner reflects on messy vs structured examples and names one real-world formatting problem observed.",
+      "learner_response_required": true
     },
     {
       "id": "quiz_q1",
       "type": "choice",
-      "description": "Why does data formatting matter for AI adoption?",
-      "correct_response": "It helps systems interpret information consistently."
+      "description": "Vendor Intake Automation: why may contract_value \"$4,800\" cause unreliable routing against auto_approve_threshold_usd 5000?",
+      "correct_response": "contract_value is stored as a formatted string, so numeric threshold rules may fail or behave inconsistently"
     },
     {
       "id": "quiz_q2",
       "type": "choice",
-      "description": "Which example is easiest for automation to process?",
-      "correct_response": "\"renewal_date\": \"2026-06-15\""
+      "description": "AI access record: what is the primary business risk when approved is true with full_export, Confidential classification, self-service enrollment, and last_reviewed null?",
+      "correct_response": "The record shows approved access to confidential data with export capability, but approval evidence is weak and no review date is recorded"
     },
     {
       "id": "quiz_q3",
       "type": "choice",
-      "description": "What is the main business risk when status is active and approved is false?",
-      "correct_response": "The item appears active even though it has not been approved."
+      "description": "Expense Pre-Approval Bot: which formatting issue should be prioritized first when amount is \"two hundred fifty\" and trigger_amount_usd is 250?",
+      "correct_response": "amount is expressed in words instead of a numeric value, so threshold rules cannot run reliably"
     },
     {
       "id": "quiz_q4",
       "type": "choice",
-      "description": "What does a null last_reviewed value often indicate?",
-      "correct_response": "The record may lack review evidence."
+      "description": "Pipeline records A vs B: which record is more trustworthy for automated quarterly forecasting?",
+      "correct_response": "Record B, because revenue and close date use consistent machine-readable formats and the record shows when it was updated"
     },
     {
       "id": "quiz_q5",
       "type": "choice",
-      "description": "Which is the best manager-level follow-up question?",
-      "correct_response": "How will this workflow route work correctly when the required reviewer field is missing?"
+      "description": "HR Policy Q&A Bot intake: best manager-level next step before wider rollout when sources mix policies and email_threads with source_document_dates various?",
+      "correct_response": "Require a source inventory with document owner, version or effective date, and approved policy scope before expanding access"
     }
   ],
   "metadata": {
@@ -109,18 +148,18 @@
       "AI adoption pathway component",
       "Digital literacy foundation"
     ],
-    "delivery_platform": [
+    "delivery_platforms": [
       "Skool",
       "Workshop",
       "Advisory enablement"
     ],
     "human_review_required": true,
-    "status": "draft"
+    "status": "needs_revision"
   },
   "review_notes": [
-    "Confirm quiz scoring behavior in target SCORM authoring tool.",
-    "Confirm whether activity submission is tracked inside SCORM runtime or collected externally.",
-    "Validate launch asset naming during packaging.",
-    "This metadata is SCORM 1.2-ready but is not a packaged SCORM ZIP."
+    "This file is SCORM 1.2-ready planning metadata only. scorm_package_exists is false.",
+    "No launch asset exists today. Define launch_asset during a future SCORM export, if requested.",
+    "Confirm quiz scoring and DO rubric evaluation in target LMS or authoring tool before export.",
+    "Activity submissions may be collected in Skool or externally; SCORM runtime tracking is not implemented."
   ]
 }

@@ -1,5 +1,6 @@
 {
   "template_id": "hackademic-xapi-template-why-data-formatting-matters-v1",
+  "tracking_status": "template_only_not_connected_to_lrs",
   "actor_placeholder": {
     "name": "{{learner_name}}",
     "mbox": "mailto:{{learner_email}}"
@@ -11,41 +12,35 @@
     }
   },
   "object": {
-    "id": "https://hackademic.solutions/learning-objects/why-data-formatting-matters",
+    "id": "https://hackademic.solutions/learning-objects/why-data-formatting-matters/do-readiness-review",
     "definition": {
       "name": {
-        "en-US": "Why Data Formatting Matters: A Manager\u2019s Guide to Structured Information"
+        "en-US": "Structured workflow readiness review — Security Alert Triage Copilot"
       },
       "description": {
-        "en-US": "Learner demonstrated business-level understanding of how structured data formatting supports data quality, automation, AI adoption, reporting, and governance."
+        "en-US": "Learner demonstrated ability to prioritize a formatting or data quality issue in a structured workflow record, submit a defensible readiness decision, and ask a manager-level follow-up question that names workflow dependency and accountability."
       },
-      "type": "http://adlnet.gov/expapi/activities/lesson"
+      "type": "http://adlnet.gov/expapi/activities/assessment"
     }
   },
   "context": {
     "contextActivities": {
-      "category": [
+      "parent": [
         {
-          "id": "https://hackademic.solutions/categories/digital-literacy-foundation",
+          "id": "https://hackademic.solutions/learning-objects/why-data-formatting-matters",
           "definition": {
             "name": {
-              "en-US": "Digital Literacy Foundation"
+              "en-US": "Why Data Formatting Matters: A Manager's Guide to Structured Information"
             }
           }
-        },
+        }
+      ],
+      "category": [
         {
           "id": "https://hackademic.solutions/categories/format-plus",
           "definition": {
             "name": {
               "en-US": "Format Plus"
-            }
-          }
-        },
-        {
-          "id": "https://hackademic.solutions/categories/ai-adoption-pathway",
-          "definition": {
-            "name": {
-              "en-US": "AI Adoption Pathway"
             }
           }
         }
@@ -58,34 +53,75 @@
       "https://hackademic.solutions/xapi/extensions/pathway": "Format Plus"
     }
   },
+  "success_criteria": {
+    "notes": "Success requires DO artifact rubric pass AND quiz mastery. Quiz score alone does not produce result.success true.",
+    "quiz_threshold": {
+      "raw_min": 4,
+      "raw_max": 5,
+      "scaled_min": 0.8
+    },
+    "do_rubric_threshold": {
+      "prioritized_issue_score_min": 1,
+      "readiness_decision_valid_required": true,
+      "follow_up_question_score_min": 1,
+      "partial_credit_insufficient": "Naming last_reviewed null without automation or formatting consequence does not pass prioritized_issue."
+    }
+  },
   "result": {
-    "completion": "{{true_or_false}}",
-    "success": "{{true_or_false}}",
+    "completion": "{{all_required_artifacts_submitted}}",
+    "success": "{{do_rubric_pass_and_quiz_mastery}}",
     "score": {
-      "scaled": "{{quiz_score_scaled}}",
-      "raw": "{{quiz_score_raw}}",
+      "scaled": "{{combined_score_scaled}}",
+      "raw": "{{combined_score_raw}}",
       "min": 0,
-      "max": 5
+      "max": 10
     },
     "response": "{{learner_manager_follow_up_question}}",
     "extensions": {
-      "https://hackademic.solutions/xapi/extensions/identified-formatting-issue": "{{learner_identified_issue}}",
+      "https://hackademic.solutions/xapi/extensions/quiz-raw-score": "{{quiz_score_raw}}",
+      "https://hackademic.solutions/xapi/extensions/quiz-scaled-score": "{{quiz_score_scaled}}",
+      "https://hackademic.solutions/xapi/extensions/readiness-decision": "{{learner_readiness_decision}}",
+      "https://hackademic.solutions/xapi/extensions/readiness-rationale": "{{learner_readiness_rationale}}",
+      "https://hackademic.solutions/xapi/extensions/readiness-decision-valid": "{{readiness_decision_valid}}",
+      "https://hackademic.solutions/xapi/extensions/prioritized-formatting-issue": "{{learner_prioritized_issue}}",
+      "https://hackademic.solutions/xapi/extensions/prioritized-issue-score": "{{prioritized_issue_score}}",
+      "https://hackademic.solutions/xapi/extensions/follow-up-question-score": "{{follow_up_question_score}}",
+      "https://hackademic.solutions/xapi/extensions/do-rubric-pass": "{{do_rubric_pass}}",
       "https://hackademic.solutions/xapi/extensions/identified-important-fields": "{{learner_selected_fields}}",
       "https://hackademic.solutions/xapi/extensions/reflection-summary": "{{learner_reflection_summary}}"
     }
   },
   "evidence_artifact": {
-    "type": "structured_data_review_submission",
-    "description": "Learner-submitted review of the AI Contract Summary Routing structured data example.",
-    "placeholder_id": "{{structured_data_review_submission_id}}",
-    "placeholder_url": "{{structured_data_review_submission_url}}",
+    "type": "structured_workflow_readiness_review",
+    "description": "Learner-submitted readiness review of the Security Alert Triage Copilot structured record.",
+    "placeholder_id": "{{structured_workflow_readiness_review_id}}",
+    "placeholder_url": "{{structured_workflow_readiness_review_url}}",
     "expected_contents": [
       "Plain-English summary",
-      "Three fields that matter for business decision-making",
-      "One formatting or data quality issue",
-      "One manager-level follow-up question",
+      "Three decision-relevant fields with rationale",
+      "Highest-priority formatting or data quality issue with business consequence",
+      "Readiness decision (Expand / Continue pilot only / Hold)",
+      "One-sentence readiness rationale",
+      "Manager-level follow-up question naming workflow dependency and accountability",
       "Reflection response"
-    ]
+    ],
+    "rubric": {
+      "prioritized_issue": {
+        "scale": "0-1",
+        "pass": "Identifies non-trivial conflict or formatting problem with stated business consequence",
+        "fail": "Only names null last_reviewed or other single blank field without consequence analysis"
+      },
+      "readiness_decision_valid": {
+        "scale": "boolean",
+        "pass": "Decision (Expand / Continue pilot only / Hold) aligns with stated rationale and record evidence",
+        "fail": "Decision contradicts rationale or ignores visible automation risk"
+      },
+      "follow_up_question": {
+        "scale": "0-1",
+        "pass": "Specific question naming workflow dependency and accountable role or owner",
+        "fail": "Generic handoff to IT or syntax-focused question"
+      }
+    }
   },
   "statement_example": {
     "actor": {
@@ -99,19 +135,29 @@
       }
     },
     "object": {
-      "id": "https://hackademic.solutions/learning-objects/why-data-formatting-matters",
+      "id": "https://hackademic.solutions/learning-objects/why-data-formatting-matters/do-readiness-review",
       "definition": {
         "name": {
-          "en-US": "Why Data Formatting Matters: A Manager\u2019s Guide to Structured Information"
+          "en-US": "Structured workflow readiness review — Security Alert Triage Copilot"
         },
         "description": {
-          "en-US": "Learner demonstrated business-level understanding of how structured data formatting supports data quality, automation, AI adoption, reporting, and governance."
+          "en-US": "Learner demonstrated ability to prioritize a formatting or data quality issue in a structured workflow record, submit a defensible readiness decision, and ask a manager-level follow-up question that names workflow dependency and accountability."
         },
-        "type": "http://adlnet.gov/expapi/activities/lesson"
+        "type": "http://adlnet.gov/expapi/activities/assessment"
       }
     },
     "context": {
       "contextActivities": {
+        "parent": [
+          {
+            "id": "https://hackademic.solutions/learning-objects/why-data-formatting-matters",
+            "definition": {
+              "name": {
+                "en-US": "Why Data Formatting Matters: A Manager's Guide to Structured Information"
+              }
+            }
+          }
+        ],
         "category": [
           {
             "id": "https://hackademic.solutions/categories/format-plus",
@@ -133,22 +179,31 @@
       "completion": true,
       "success": true,
       "score": {
-        "scaled": 0.8,
-        "raw": 4,
+        "scaled": 0.9,
+        "raw": 9,
         "min": 0,
-        "max": 5
+        "max": 10
       },
-      "response": "How does the workflow handle contract routing when the required reviewer field is missing, and who is accountable for correcting that data before production approval?",
+      "response": "Who must approve changes to escalation rules before a high-severity disable_account recommendation can run with human_review_required false, and what timestamp format will Security Operations require in alert intake before this workflow scales?",
       "extensions": {
-        "https://hackademic.solutions/xapi/extensions/identified-formatting-issue": "The required reviewer field is missing.",
-        "https://hackademic.solutions/xapi/extensions/identified-important-fields": "status, approved_for_production, missing_fields",
+        "https://hackademic.solutions/xapi/extensions/quiz-raw-score": 4,
+        "https://hackademic.solutions/xapi/extensions/quiz-scaled-score": 0.8,
+        "https://hackademic.solutions/xapi/extensions/readiness-decision": "Hold",
+        "https://hackademic.solutions/xapi/extensions/readiness-rationale": "Auto-escalation is enabled without human review while the sample alert recommends disable_account at high severity and status remains pilot.",
+        "https://hackademic.solutions/xapi/extensions/readiness-decision-valid": true,
+        "https://hackademic.solutions/xapi/extensions/prioritized-formatting-issue": "auto_escalate_enabled is true and human_review_required is false while recommended_action is disable_account for a high-severity alert; event_time is not machine-readable.",
+        "https://hackademic.solutions/xapi/extensions/prioritized-issue-score": 1,
+        "https://hackademic.solutions/xapi/extensions/follow-up-question-score": 1,
+        "https://hackademic.solutions/xapi/extensions/do-rubric-pass": true,
+        "https://hackademic.solutions/xapi/extensions/identified-important-fields": "recommended_action, human_review_required, event_time",
         "https://hackademic.solutions/xapi/extensions/reflection-summary": "Structured data is more reliable for AI, automation, reporting, and governance than ambiguous notes."
       }
     },
     "timestamp": "{{timestamp_iso8601}}"
   },
   "review_notes": [
-    "This is an xAPI-ready statement template only. It does not indicate live LRS tracking.",
+    "This is an xAPI-ready statement template only. tracking_status is template_only_not_connected_to_lrs.",
+    "result.success requires do_rubric_pass AND quiz mastery (>= 4/5). Quiz-only completion is insufficient.",
     "Confirm final activity object URL before implementation.",
     "Confirm whether evidence artifact is stored in Skool, LMS, repository, or separate assessment system.",
     "Validate extension URLs before production use."

@@ -1,52 +1,44 @@
-# DO: Data formatting review
+# DO: Structured workflow readiness review
 
 ## Exercise
 
-Review the structured data below.
+Review the structured record below.
 
-You are a department manager reviewing whether an AI-enabled workflow is ready for broader use.
+You are a department manager asked whether an AI-assisted security workflow should expand beyond its current pilot. The vendor demo looked fine. Your job is to read the metadata and decide whether the **data** supports reliable automation.
 
 ```json
 {
-  "workflow_name": "AI Contract Summary Routing",
-  "business_owner": "Legal Operations",
+  "workflow_name": "Security Alert Triage Copilot",
+  "business_owner": "Security Operations",
   "status": "pilot",
-  "purpose": "Summarize incoming contracts and route them to the correct reviewer",
-  "data_inputs": [
-    "contract_document",
-    "vendor_name",
-    "contract_value",
-    "department",
-    "risk_level"
-  ],
-  "required_fields": [
-    "vendor_name",
-    "contract_value",
-    "department",
-    "risk_level",
-    "reviewer"
-  ],
-  "missing_fields": [
-    "reviewer"
-  ],
+  "purpose": "Summarize incoming identity alerts and recommend escalation actions",
+  "sample_alert": {
+    "alert_id": "SA-99214",
+    "severity": "high",
+    "source_system": "identity_provider",
+    "user_principal": "jwells@company.com",
+    "event_time": "June 18 afternoon",
+    "recommended_action": "disable_account",
+    "approval_status": "not_required"
+  },
   "automation": {
     "ai_summary_enabled": true,
-    "auto_route_enabled": true,
-    "human_review_required": true
+    "auto_escalate_enabled": true,
+    "human_review_required": false
   },
   "governance": {
-    "approved_for_production": false,
-    "pilot_end_date": "2026-07-31",
-    "last_reviewed": null
+    "approved_for_production": true,
+    "last_reviewed": null,
+    "executive_sponsor": "CISO"
   }
 }
 ```
 
-Complete four tasks.
+Complete five tasks. Write in plain English. Do not assume you can see fields that are not shown.
 
 ## A. Plain-English summary
 
-In two or three sentences, describe what this structured data appears to say.
+In two or three sentences, describe what this record appears to say about the workflow and the sample alert.
 
 ## B. Identify three fields that matter for business decision-making
 
@@ -54,53 +46,83 @@ Use this format:
 
 | Field | Value | Why it matters |
 |---|---|---|
-| `status` | `pilot` | Shows this is not yet a fully approved production workflow. |
+| `severity` | `high` | Shows the sample alert is not a low-priority test case. |
 
-## C. Identify one formatting or data quality issue
+Choose fields that would influence whether you trust automated action on a real account.
 
-Look for missing, unclear, or inconsistent information.
+## C. Identify the highest-priority formatting or data quality issue
 
-Possible issues include:
+Multiple issues may be visible. **Prioritize one** and explain why it is more urgent than the others.
 
-- A required field is missing.
-- A review date is blank.
-- The workflow has automation enabled but is not approved for production.
-- The routing process depends on a missing reviewer field.
+Do not treat field labels or metadata sections as a checklist of correct answers. Explain the business consequence.
 
-## D. Write one manager-level follow-up question
+## D. Readiness decision
 
-Good questions are specific.
+Select one:
 
-Weak question:
+- **Expand** — ready for broader production use
+- **Continue pilot only** — useful experiment, not ready to scale
+- **Hold** — stop or freeze expansion until specific data and governance issues are corrected
 
-> Is this okay?
+Add one sentence defending your choice.
 
-Better question:
+## E. Manager-level follow-up question
 
-> How will the workflow route contracts correctly when the required `reviewer` field is missing?
+Write one specific question you would ask the business owner before signing off.
 
-## Suggested answer key
+Name a workflow dependency and who should be accountable for fixing the data or control gap.
+
+---
+
+## Submission rubric
+
+| Criterion | Meets expectation | Partial | Does not meet |
+|---|---|---|---|
+| Summary | Accurately describes workflow purpose, alert context, and automation scope | Omits automation or governance context | Misreads what the record describes |
+| Field selection | Three fields tied to decision quality, not trivia | Fields listed without business rationale | Fields irrelevant to readiness |
+| Prioritized issue | Identifies a **non-trivial** conflict or formatting problem with business consequence | Names a visible gap without prioritization or consequence | Only restates a single null field with no analysis |
+| Readiness decision | Decision matches stated rationale and record evidence | Decision or rationale is vague | Decision contradicts visible record |
+| Follow-up question | Specific, names dependency and accountability | Generic question to "IT" | Non-actionable or syntax-focused |
+
+**Full credit on Task C** requires more than noting `last_reviewed` is null. Accept strong answers that prioritize, for example:
+
+- non-machine-readable `event_time` breaking correlation and audit timelines
+- `human_review_required: false` combined with `recommended_action: disable_account` and `auto_escalate_enabled: true`
+- `status: pilot` conflicting with `approved_for_production: true`
+- `approval_status: not_required` on a high-severity account-disable recommendation
+
+---
+
+## Suggested answer key (facilitator use)
 
 ### A. Plain-English summary
 
-This structured data describes a pilot workflow that uses AI to summarize contracts and automatically route them to reviewers. It is not approved for production, and one required field, `reviewer`, is missing.
+This record describes a pilot AI copilot that summarizes identity alerts and can auto-escalate recommended actions. The sample alert is high severity and recommends disabling an account. The workflow metadata shows automation can run without human review, while governance flags production approval even though no review date is recorded.
 
-### B. Three fields that matter
+### B. Three fields that matter (sample responses)
 
 | Field | Value | Why it matters |
 |---|---|---|
-| `status` | `pilot` | Shows the workflow is still being tested. |
-| `approved_for_production` | `false` | Indicates it should not be treated as fully approved for broader use. |
-| `missing_fields` | `reviewer` | The workflow needs a reviewer to route contracts correctly. |
-| `auto_route_enabled` | `true` | The system can take action automatically, so data quality matters more. |
-| `last_reviewed` | `null` | There is no recorded review date, which weakens governance evidence. |
+| `recommended_action` | `disable_account` | Automated or escalated account disablement has immediate business impact. |
+| `human_review_required` | `false` | Shows the workflow may act without analyst confirmation. |
+| `event_time` | `June 18 afternoon` | Ambiguous timestamps weaken investigation, correlation, and audit evidence. |
+| `approved_for_production` | `true` | Signals organizational intent to treat the workflow as production-ready. |
+| `status` | `pilot` | Indicates the workflow is still experimental. |
 
-### C. Data quality issue
+### C. Strong prioritized issue (examples)
 
-The workflow requires a `reviewer`, but the `reviewer` field is missing.
+**Strong:** The most urgent issue is that `auto_escalate_enabled` is true, `human_review_required` is false, and the sample alert recommends `disable_account` for a high-severity event. That combination means formatting and control metadata allow consequential automated action without human confirmation.
 
-That is a practical problem because auto-routing depends on knowing who should receive the contract.
+**Also strong:** `event_time` is not machine-readable. Security automation and reporting depend on reliable timestamps for correlation across systems. "June 18 afternoon" forces interpretation and can break timelines during an investigation.
 
-### D. Follow-up question
+**Partial only:** `last_reviewed` is null. True, but that alone does not explain the automation risk visible in the alert and control fields.
 
-How does the workflow handle contract routing when the required reviewer field is missing, and who is accountable for correcting that data before production approval?
+### D. Readiness decision
+
+**Hold** or **Continue pilot only** are both defensible if the rationale cites automation-on-disable-account risk, pilot/production conflict, or weak time formatting.
+
+**Expand** should score as inconsistent unless the learner identifies a convincing reason the visible record is incomplete or misleading.
+
+### E. Follow-up question (sample)
+
+Who must approve changes to escalation rules before a high-severity `disable_account` recommendation can run with `human_review_required: false`, and what timestamp format will Security Operations require in alert intake before this workflow scales?
